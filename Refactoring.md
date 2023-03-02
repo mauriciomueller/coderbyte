@@ -8,4 +8,17 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
-## Your Explanation Here
+## Mauricio Mueller Explanation about refactoring
+
+1. I used the library `jest` to write unit tests to cover the existing functionality and ensure that my refactor doesn't break it.
+   1. Testing function without input
+   1. Testing function with an existing partition key
+   1. Testing function with a string input
+   2. Testing function with a number input
+   1. Testing function with partitionKey length is larger than 256
+1. The constants TRIVIAL_PARTITION_KEY and MAX_PARTITION_KEY_LENGTH were moved outside the function to make them more visible and reusable throughout the module if needed. 
+1. The generateHashValue function was extracted into a separate function to remove duplication and make the code more modular.
+1. The generatePartitionKey function was extracted into a separate function to remove duplication and make the code more modular.
+1. The original code had a series of nested if statements that were difficult to read and understand. The refactored code simplifies the logic by using a ternary operator to set the partitionKey value.
+1. The refactored code removes an unnecessary check to convert candidate to a string. If candidate is already a string, the check is not needed.
+1. The final if statement in the original code was checking the length of candidate and then re-hashing it if it was too long. In my refactored code, this logic is condensed into a single line using a ternary operator.
